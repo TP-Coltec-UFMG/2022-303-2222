@@ -14,6 +14,7 @@
 ## Tela inicial:
 Primeiramente, temos o "Main Menu" que possui 3 botões clicáveis
 - Jogar -> Inicia o jogo
+	- Ao iniciar o jogo, o jogador poderá escolher a dificuldade do jogo
 - Opções -> Abre o Menu de Opções (detalhado no próximo tópico)
 - Sair -> Fecha o jogo
 
