@@ -1,6 +1,6 @@
 <!-- # 2022-303-NomeASerDefinido -->
 
-						🚧Essa ainda não é a versão final do jogo🚧
+<p align="center">🚧Essa ainda não é a versão final do jogo🚧</p>
 
 # Considerações Iniciais
 - Essa é a disposição inicial dos objetos, basicamente, um protótipo de como será a interface dos menus após a criação das artes.
