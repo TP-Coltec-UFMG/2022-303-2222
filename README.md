@@ -1,6 +1,8 @@
 <!-- # 2022-303-NomeASerDefinido -->
 
-<p align="center">🚧Essa ainda não é a versão final do jogo🚧</p>
+<h1 align="center">🚧Essa ainda não é a versão final do jogo🚧</h1>
+
+<p align="center"> Equipe: Amanda Bueno, Gabriel Moreira, Jean Berly, Ulisses Rosa </p>
 
 # Considerações Iniciais
 - Essa é a disposição inicial dos objetos, basicamente, um protótipo de como será a interface dos menus após a criação das artes.
