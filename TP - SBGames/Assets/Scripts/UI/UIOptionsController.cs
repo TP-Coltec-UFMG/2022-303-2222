@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIOptionsController : MonoBehaviour
+public class UIOptionsController : UIGenericMenu
 {
-    public GameObject currentObject;
-
+    [Header("UI Options Menu")]
+    [SerializeField] GameObject currentObject;
+    
     public void UpdateSubMenu(GameObject nextObject)
     {
         if(currentObject == null) 
         {
             currentObject = new GameObject();
+            Destroy(currentObject, 5f);
         }
+        
         currentObject.SetActive(false);
         nextObject.SetActive(true);
         currentObject = nextObject;
@@ -22,4 +25,5 @@ public class UIOptionsController : MonoBehaviour
         nextObject.SetActive(true);
         gameObject.SetActive(false);
     }
+
 }

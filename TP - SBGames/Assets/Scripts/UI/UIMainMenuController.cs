@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIMainMenuController : MonoBehaviour
+public class UIMainMenuController : UIGenericMenu
 {
-    GameObject eventSystem;
-
     public void StartGame(string nextSceneName)
     {
         Debug.Log("Iniciou o jogo");

@@ -2372,6 +2372,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1856527359}
+        m_TargetAssemblyTypeName: UIGenericMenu, Assembly-CSharp
+        m_MethodName: FirstSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 430814296}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &992337964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2944,6 +2956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429fa01f8bf4b5d4188d75a8cc7f195f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSelected: {fileID: 0}
 --- !u!1 &1378262444
 GameObject:
   m_ObjectHideFlags: 0
@@ -3364,6 +3377,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1374177508}
         m_TargetAssemblyTypeName: UIMainMenuController, Assembly-CSharp
+        m_MethodName: FirstSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 675501021}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1374177508}
+        m_TargetAssemblyTypeName: UIMainMenuController, Assembly-CSharp
         m_MethodName: OpenOptionsMenu
         m_Mode: 2
         m_Arguments:
@@ -3586,10 +3611,10 @@ RectTransform:
   m_Father: {fileID: 2136801749}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1856527359
 MonoBehaviour:
@@ -3603,7 +3628,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c78d8292dbbf64983b1c337da87aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentObject: {fileID: 0}
+  currentSelected: {fileID: 0}
+  currentObject: {fileID: 1092928461}
 --- !u!1 &1871561665
 GameObject:
   m_ObjectHideFlags: 0
