@@ -36,7 +36,7 @@ Primeiramente, temos o "Main Menu" que possui 3 botões clicáveis
 ### Acessibilidade
 - Aqui será possivel ativar e configurar as opções de acessibilidade:
 	- Opções de texto (legenda, tamanho da fonte da legenda)
-	- Filtros de Imagem (daltonismo)
+	- Filtros de Imagem (Protanopia, Deuteranopia, Tritanopia)
 	- |*Possibilidade*| Audiodescrição e narração em LIBRAS
 
 <p align="center"><img src="https://user-images.githubusercontent.com/68441010/171026625-eecdf1c7-a9fc-4dd7-a46d-f261de6203e1.jpg" alt="Menu das opções aberto com a opção de Acessibilidade selecionada, onde é possível ativar/desativar as seguintes opções: Legenda, Filtro de Imagem, Audiodescrição e Libras."></p>
