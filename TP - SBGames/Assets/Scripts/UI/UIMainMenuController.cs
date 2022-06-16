@@ -10,7 +10,7 @@ public class UIMainMenuController : UIGenericMenu
         Debug.Log("Iniciou o jogo");
         // SceneManager.LoadScene(nextSceneName);
     }
-
+    
     public void OpenOptionsMenu(GameObject optionsMenu)
     {
         optionsMenu.SetActive(true);
