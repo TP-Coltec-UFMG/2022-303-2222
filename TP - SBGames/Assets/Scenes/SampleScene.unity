@@ -665,7 +665,7 @@ GameObject:
   - component: {fileID: 1665819097}
   - component: {fileID: 1665819096}
   m_Layer: 0
-  m_Name: Teste
+  m_Name: MazeGeneratorObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -687,8 +687,7 @@ MonoBehaviour:
   wallTileMap: {fileID: 1354220608}
   wallTile: {fileID: 11400000, guid: 9bafad717a8a0d34c9ad44def34108e9, type: 2}
   groundTile: {fileID: 11400000, guid: a045a30d628c0ed40a6753c7993fc181, type: 2}
-  TilemapSize: {x: 0, y: 0, z: 0}
-  TilemapDimension: 40
+  TilemapDimension: 12
 --- !u!4 &1665819097
 Transform:
   m_ObjectHideFlags: 0
