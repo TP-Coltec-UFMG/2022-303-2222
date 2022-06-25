@@ -5,42 +5,44 @@ using UnityEngine.Tilemaps;
 using UnityEditor;
 namespace Maze_Generator {
     public class TilemapMazeGenerator : MonoBehaviour {
-        public Tilemap groundTileMap;
-        public Tilemap wallTileMap;
+        public Tilemap groundTilemap;
+        public Tilemap wallTilemap;
         public Tile wallTile;
         public Tile groundTile;
-        private int realHeightOfTileMap;
-        private int realWidthOfTileMap;
+        [Range(1, 200)]
+        public int tilemapDimension;
+        private int realHeightOfTilemap;
+        private int realWidthOfTilemap;
         private int[,] tiles;
         private const int WALL = 1;
         private const int MAZE_CELL_SIZE = 2;
         private const int WALL_SIZE = 1;
-        private Vector3Int TilemapSize;
-        public int TilemapDimension;
+        private Vector3Int tilemapSize;
+
         private void Start() {
-            makeMaze();
+            GenerateTileMapMaze();
         }
-        private void makeMaze() {
-            TilemapSize = new Vector3Int(TilemapDimension, TilemapDimension, 0);
-            realWidthOfTileMap = (TilemapSize.x * MAZE_CELL_SIZE) + WALL_SIZE * (TilemapSize.x - 1) + MAZE_CELL_SIZE;
-            realHeightOfTileMap = (TilemapSize.y * MAZE_CELL_SIZE) + (TilemapSize.y - 1) * WALL_SIZE + MAZE_CELL_SIZE;
+        private void GenerateTileMapMaze() {
+            tilemapSize = new Vector3Int(tilemapDimension, tilemapDimension, 0);
+            realWidthOfTilemap = (tilemapSize.x * MAZE_CELL_SIZE) + WALL_SIZE * (tilemapSize.x - 1) + MAZE_CELL_SIZE;
+            realHeightOfTilemap = (tilemapSize.y * MAZE_CELL_SIZE) + (tilemapSize.y - 1) * WALL_SIZE + MAZE_CELL_SIZE;
             if (tiles == null) {
-                tiles = generateMaze();
-            }                   
-            for (int i = 0; i < realWidthOfTileMap; i++) {
-                for (int j = 0; j < realHeightOfTileMap; j++) {
+                tiles = GenerateMaze();
+            }
+            for (int i = 0; i < realWidthOfTilemap; i++) {
+                for (int j = 0; j < realHeightOfTilemap; j++) {
                     if (tiles[i, j] == WALL) {
-                        wallTileMap.SetTile(new Vector3Int(-i + (TilemapSize.x / 2), -j + (TilemapSize.y / 2), 0), wallTile);
+                        wallTilemap.SetTile(new Vector3Int(-i + (tilemapSize.x / 2), -j + (tilemapSize.y / 2), 0), wallTile);
                     }
                     else {
-                        groundTileMap.SetTile(new Vector3Int(-i + TilemapSize.x / 2, -j + TilemapSize.y / 2, 0), groundTile);
+                        groundTilemap.SetTile(new Vector3Int(-i + tilemapSize.x / 2, -j + tilemapSize.y / 2, 0), groundTile);
                     }
                 }
             }
         }
 
-        private int[,] generateMaze() {
-            MazeGenerator mazeGenerator = new MazeGenerator(TilemapSize.x, TilemapSize.y);
+        private int[,] GenerateMaze() {
+            MazeGenerator mazeGenerator = new MazeGenerator(tilemapSize.x, tilemapSize.y);
             int[,] maze = mazeGenerator.GenerateMaze();
             return maze;
         }
