@@ -25,8 +25,8 @@ namespace Maze_Generator
 
         public MazeGenerator(int width, int height)
         {
-            if (width <= 0 || height <= 0) {
-                throw new ArgumentException("Width and/or height should be higher than 0");
+            if (width <= 1 || height <= 1) {
+                throw new ArgumentException("Width and/or height should be higher than 1");
             }
             this.width = width;
             this.height = height;

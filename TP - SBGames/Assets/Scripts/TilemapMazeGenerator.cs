@@ -22,13 +22,11 @@ namespace Maze_Generator {
         private void Start() {
             GenerateTileMapMaze();
         }
-        private void GenerateTileMapMaze() {
+        public void GenerateTileMapMaze() {
             tilemapSize = new Vector3Int(tilemapDimension, tilemapDimension, 0);
             realWidthOfTilemap = (tilemapSize.x * MAZE_CELL_SIZE) + WALL_SIZE * (tilemapSize.x - 1) + MAZE_CELL_SIZE;
             realHeightOfTilemap = (tilemapSize.y * MAZE_CELL_SIZE) + (tilemapSize.y - 1) * WALL_SIZE + MAZE_CELL_SIZE;
-            if (tiles == null) {
-                tiles = GenerateMaze();
-            }
+            tiles = GenerateMaze();
             for (int i = 0; i < realWidthOfTilemap; i++) {
                 for (int j = 0; j < realHeightOfTilemap; j++) {
                     if (tiles[i, j] == WALL) {
