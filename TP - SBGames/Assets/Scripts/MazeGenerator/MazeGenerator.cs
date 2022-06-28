@@ -25,6 +25,9 @@ namespace Maze_Generator
 
         public MazeGenerator(int width, int height)
         {
+            if (width <= 1 || height <= 1) {
+                throw new ArgumentException("Width and/or height should be higher than 1");
+            }
             this.width = width;
             this.height = height;
             maxNumberOfCoordinates = height * width; 
@@ -67,21 +70,6 @@ namespace Maze_Generator
                 }               
             }
             return maze;
-        }
-
-        public void printMaze(int[,] maze)
-        {
-            for (int i = 0; i < maze.GetLength(0); i++)
-            {
-                string s = "";
-                for (int j = 0; j < maze.GetLength(1); j++)
-                {
-                    if (maze[i, j] == WALL) s += "* ";
-                    else s += "  ";
-                }
-                Console.WriteLine(s);
-            }           
-            Console.WriteLine("\n");
         }
 
         private void BreakWall(int[,] maze, Coordinate a, Coordinate b)

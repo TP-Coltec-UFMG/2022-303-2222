@@ -664,6 +664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1665819097}
   - component: {fileID: 1665819096}
+  - component: {fileID: 1665819098}
   m_Layer: 0
   m_Name: MazeGeneratorObject
   m_TagString: Untagged
@@ -683,11 +684,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6246e12d17363db49a524a155faa8f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundTileMap: {fileID: 1560482057}
-  wallTileMap: {fileID: 1354220608}
+  groundTilemap: {fileID: 1560482057}
+  wallTilemap: {fileID: 1354220608}
   wallTile: {fileID: 11400000, guid: 9bafad717a8a0d34c9ad44def34108e9, type: 2}
   groundTile: {fileID: 11400000, guid: a045a30d628c0ed40a6753c7993fc181, type: 2}
-  TilemapDimension: 12
+  tilemapDimension: 12
 --- !u!4 &1665819097
 Transform:
   m_ObjectHideFlags: 0
@@ -703,3 +704,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1665819098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665819095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6afca37f6063b3d42a69201858ffc6e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemapSize: {x: 0, y: 0, z: 0}
