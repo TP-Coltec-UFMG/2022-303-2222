@@ -19,9 +19,18 @@ namespace Maze_Generator {
         private const int WALL_SIZE = 1;
         private Vector3Int tilemapSize;
 
-        private void Start() {
+        private void Start()
+        {
+            ClearMaze();
             GenerateTileMapMaze();
+        } 
+        
+        public void ClearMaze()
+        {
+            wallTilemap.ClearAllTiles();
+            groundTilemap.ClearAllTiles();
         }
+        
         public void GenerateTileMapMaze() {
             tilemapSize = new Vector3Int(tilemapDimension, tilemapDimension, 0);
             realWidthOfTilemap = (tilemapSize.x * MAZE_CELL_SIZE) + WALL_SIZE * (tilemapSize.x - 1) + MAZE_CELL_SIZE;

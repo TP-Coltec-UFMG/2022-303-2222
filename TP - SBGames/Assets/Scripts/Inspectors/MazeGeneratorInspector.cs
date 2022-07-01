@@ -13,15 +13,13 @@ namespace Maze_Generator
 
             if (GUILayout.Button("Generate Maze"))
             {
-                tilemapMazeGenerator.wallTilemap.ClearAllTiles();
-                tilemapMazeGenerator.groundTilemap.ClearAllTiles();                    
+                tilemapMazeGenerator.ClearMaze();
                 tilemapMazeGenerator.GenerateTileMapMaze();
             }
 
             if(GUILayout.Button("Clear Maze"))
             {
-                tilemapMazeGenerator.wallTilemap.ClearAllTiles();
-                tilemapMazeGenerator.groundTilemap.ClearAllTiles();
+                tilemapMazeGenerator.ClearMaze();
             }
         }
     }
