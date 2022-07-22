@@ -46,4 +46,16 @@ Primeiramente, temos o "Main Menu" que possui 3 botões clicáveis
 
 <p align="center"><img src="https://user-images.githubusercontent.com/68441010/171027556-7b06de34-f383-4ba0-b813-234f01d1b66e.jpg" alt="Menu das opções aberto com a opção de Idioma selecionada, onde é possível escolher entre Inglês e Português"></p>
 
+### Maze Generator
+- Tendo em vista que a gameplay do nosso jogo se passa em um labirinto, para evitar o repetitivo trabalho de criação manual dos tilemaps de mapas, implementamos um gerador de labirintos. Dessa forma, conseguimos fazer com que o jogador tenha uma experiência diferente a cada vez que ele joga 2222.
+
+<p align="center"><img src="https://user-images.githubusercontent.com/81490716/179044603-70a6a2d8-ebfe-4a68-a1f4-e0eeaf1ace64.png" alt="Inspector do gerador de labirintos"></p>
+
+- Os sprites e o tile map da parede e do chão são passados como parâmetros no inspector do gerador de labirintos. Com isso conseguimos providenciar uma customização para o layout do labirinto.
+
+<p align="center"><img src="https://user-images.githubusercontent.com/81490716/179046968-6ff37f2a-8bf5-446b-8ff6-104014d03a54.png" alt="Tela da Unity"></p>
+
+
+
+
 
