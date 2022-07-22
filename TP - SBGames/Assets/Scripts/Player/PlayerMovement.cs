@@ -6,9 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Range(0, 10)] [SerializeField] float speed;
+    [Range(0, 10)] [SerializeField] float speed = 1f;
     [SerializeField] Transform movePoint;
     [SerializeField] LayerMask wallCollisionLayer;
+    float xAxisInput, yAxisInput;
     void Start()
     {
         movePoint.parent = null;
@@ -16,8 +17,30 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        float xAxisInput = Input.GetAxisRaw("Horizontal");
-        float yAxisInput = Input.GetAxisRaw("Vertical");
+        if(Input.GetKeyDown(KeyCode.RightArrow)) 
+        {
+            xAxisInput = 1;
+            //AudioSource.Play();
+        }
+        else if(Input.GetKeyDown(KeyCode.LeftArrow)) 
+        {
+            xAxisInput = -1;
+            //AudioSource.Play();
+        }
+        else xAxisInput = 0;
+
+        if(Input.GetKeyDown(KeyCode.UpArrow)) 
+        {
+            yAxisInput = 1;
+            //AudioSource.Play();
+        }
+        else if(Input.GetKeyDown(KeyCode.DownArrow)) 
+        {
+            yAxisInput = -1;
+            //AudioSource.Play();
+        } 
+        else yAxisInput = 0;
+
 
         if(Vector3.Distance(transform.position, movePoint.position) <= .05f)
         {

@@ -9,7 +9,7 @@ public class SoundLocalization : MonoBehaviour
     RaycastHit2D rightRay, leftRay, upRay, downRay;
     [SerializeField] float rayDistance = 2f;
     Vector2 rightPivot, leftPivot, upPivot, downPivot;
-    [SerializeField] AnimationCurve volumeDistanceCurve;
+    public bool EnableAudioLocalization = true;
     
     void Start()
     {
@@ -28,7 +28,7 @@ public class SoundLocalization : MonoBehaviour
         upRay = Physics2D.Raycast(upPivot, transform.up, rayDistance);
         downRay = Physics2D.Raycast(downPivot, - transform.up, rayDistance);
 
-        // AudioController();
+        if(EnableAudioLocalization) AudioController();
     }
 
     void AudioController()
