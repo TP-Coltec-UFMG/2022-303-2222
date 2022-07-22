@@ -3,30 +3,70 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Range(0, 1000)] [SerializeField] float speed;
-    Rigidbody2D rig;
-    float xInput, yInput;
-    Vector2 moveDir;
-
+    [Range(0, 10)] [SerializeField] float speed = 1f;
+    [SerializeField] Transform movePoint;
+    [SerializeField] LayerMask wallCollisionLayer;
+    float xAxisInput, yAxisInput;
     void Start()
     {
-        rig = GetComponent<Rigidbody2D>();
+        movePoint.parent = null;
     }
 
     void Update()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
+        if(Input.GetKeyDown(KeyCode.RightArrow)) 
+        {
+            xAxisInput = 1;
+            //AudioSource.Play();
+        }
+        else if(Input.GetKeyDown(KeyCode.LeftArrow)) 
+        {
+            xAxisInput = -1;
+            //AudioSource.Play();
+        }
+        else xAxisInput = 0;
 
-        moveDir = new Vector2(xInput, yInput);
+        if(Input.GetKeyDown(KeyCode.UpArrow)) 
+        {
+            yAxisInput = 1;
+            //AudioSource.Play();
+        }
+        else if(Input.GetKeyDown(KeyCode.DownArrow)) 
+        {
+            yAxisInput = -1;
+            //AudioSource.Play();
+        } 
+        else yAxisInput = 0;
+
+
+        if(Vector3.Distance(transform.position, movePoint.position) <= .05f)
+        {
+            if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(xAxisInput, 0f, 0f), .2f, wallCollisionLayer))
+            {
+                if((Mathf.Abs(xAxisInput) == 1f))
+                {
+                    movePoint.position += new Vector3(xAxisInput, 0f, 0f);
+                    do{
+                        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
+                    }while(Vector3.Distance(transform.position, movePoint.position) > .05f);
+                }
+            }
+            
+            if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, yAxisInput, 0f), .2f, wallCollisionLayer))
+            {
+                if(Mathf.Abs(yAxisInput) == 1f)
+                {
+                    movePoint.position += new Vector3(0f, yAxisInput, 0f); 
+                    do{
+                        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
+                    }while(Vector3.Distance(transform.position, movePoint.position) > .05f);             
+                }
+            }
+        }
     }
 
-    void FixedUpdate() 
-    {
-        rig.velocity = moveDir * speed * Time.deltaTime;    
-    }
+
 }
