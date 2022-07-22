@@ -20,6 +20,9 @@ namespace Maze_Generator
         private const int MAZE_CELL_SIZE = 2;
         private const int WALL_SIZE = 1;
 
+        private readonly int maxWidth;
+        private readonly int maxHeight;
+
         private const int WALL = 1;
         private const int PASSAGE = 0;
 
@@ -30,6 +33,8 @@ namespace Maze_Generator
             }
             this.width = width;
             this.height = height;
+            maxWidth = (width * MAZE_CELL_SIZE) + WALL_SIZE * (width - 1) + MAZE_CELL_SIZE;
+            maxHeight = (height * MAZE_CELL_SIZE) + (height - 1) * WALL_SIZE + MAZE_CELL_SIZE;
             maxNumberOfCoordinates = height * width; 
             random = new Random();
         }
@@ -43,12 +48,13 @@ namespace Maze_Generator
             {
                BreakWall(maze, value.Item1, value.Item2); 
             }
+            GenerateExit(maze);
             return maze;
         }
 
         private int[,] InitMaze()
         {
-            int[,] maze = new int[(width * MAZE_CELL_SIZE) + WALL_SIZE * (width - 1) + MAZE_CELL_SIZE, (height * MAZE_CELL_SIZE) + (height - 1) * WALL_SIZE + MAZE_CELL_SIZE];
+            int[,] maze = new int[maxWidth, maxHeight];
 
             // Setting all the internal walls between the cells of the maze 
             for (int i = WALL_SIZE * 2 + 1; i < maze.GetLength(0) - WALL_SIZE; i += 3)
@@ -162,6 +168,51 @@ namespace Maze_Generator
                 } 
             }
             return possibleInitialCoordinates[random.Next(possibleInitialCoordinates.Count)];
+        }
+
+        private List<Coordinate> GetEdgeCoordinates()
+        {
+            List<Coordinate> edgeCoordinates = new List<Coordinate>();
+            for (int i = 0; i < maxWidth; i++)
+            {
+                edgeCoordinates.Add(new Coordinate(0, i));
+                edgeCoordinates.Add(new Coordinate(maxWidth - 1, i));
+                edgeCoordinates.Add(new Coordinate(i, 0));
+                edgeCoordinates.Add(new Coordinate(i, maxHeight - 1));
+            }
+            return edgeCoordinates;
+        }
+        
+        private bool IsAValidExit(int[,] maze, Coordinate coordinate)
+        {
+            if ((coordinate.x == 0 && coordinate.y == 0) 
+                || (coordinate.x == 0 && coordinate.y == maxHeight - 1)
+                || (coordinate.x == maxWidth - 1 && coordinate.y == maxHeight - 1) 
+                || (coordinate.x == maxWidth - 1 && coordinate.y == 0))
+            {
+                return false;
+            }
+            
+            List<Coordinate> adjacentCoordinates = coordinate.GetAdjcentCoordinates(maxWidth, maxHeight);
+            int nuberOfWalls = 0;
+            foreach (Coordinate value in adjacentCoordinates)
+            {
+                if (maze[value.x, value.y] == WALL) nuberOfWalls++;
+                if (nuberOfWalls > 2) return false;
+            }
+
+            return true;
+        } 
+        
+        private void GenerateExit(int[,] maze)
+        {
+            List<Coordinate> edgeCoordinates = GetEdgeCoordinates();
+            Coordinate exit = edgeCoordinates[random.Next(edgeCoordinates.Count)];
+            while (!IsAValidExit(maze, exit))
+            {
+                exit = edgeCoordinates[random.Next(edgeCoordinates.Count)];
+            }
+            maze[exit.x, exit.y] = PASSAGE;
         }
     }
 }

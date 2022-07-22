@@ -17,7 +17,7 @@ namespace Maze_Generator
              this.y = y;
          }
 
-         private List<Coordinate> GetAdjcentCoordinates(int maxWidth, int maxHeight)
+         public List<Coordinate> GetAdjcentCoordinates(int maxWidth, int maxHeight)
          {
             List<Coordinate> adjacentCoordinates = new List<Coordinate>();
 
