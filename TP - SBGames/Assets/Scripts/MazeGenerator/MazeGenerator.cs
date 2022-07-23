@@ -38,7 +38,7 @@ namespace Maze_Generator
             random = new Random();
         }
 
-        public int[,] GenerateMaze()
+        public Maze GenerateMaze()
         {
             int[,] maze = InitMaze();
             List<Tuple<Coordinate, Coordinate>> mazePath = BackTracking();
@@ -47,8 +47,8 @@ namespace Maze_Generator
             {
                BreakWall(maze, value.Item1, value.Item2); 
             }
-            GenerateExit(maze);
-            return maze;
+            Coordinate exit = GenerateExit(maze);
+            return new Maze(maze, exit);
         }
 
         private int[,] InitMaze()
@@ -191,17 +191,17 @@ namespace Maze_Generator
             }
             
             List<Coordinate> adjacentCoordinates = coordinate.GetAdjcentCoordinates(maxWidth, maxHeight);
-            int nuberOfWalls = 0;
+            int numberOfWalls = 0;
             foreach (Coordinate value in adjacentCoordinates)
             {
-                if (maze[value.x, value.y] == WALL) nuberOfWalls++;
-                if (nuberOfWalls > 2) return false;
+                if (maze[value.x, value.y] == WALL) numberOfWalls++;
+                if (numberOfWalls > 2) return false;
             }
 
             return true;
         } 
         
-        private void GenerateExit(int[,] maze)
+        private Coordinate GenerateExit(int[,] maze)
         {
             List<Coordinate> edgeCoordinates = GetEdgeCoordinates();
             Coordinate exit = edgeCoordinates[random.Next(edgeCoordinates.Count)];
@@ -210,6 +210,7 @@ namespace Maze_Generator
                 exit = edgeCoordinates[random.Next(edgeCoordinates.Count)];
             }
             maze[exit.x, exit.y] = PASSAGE;
+            return new Coordinate(exit.x, exit.y);
         }
     }
 }
