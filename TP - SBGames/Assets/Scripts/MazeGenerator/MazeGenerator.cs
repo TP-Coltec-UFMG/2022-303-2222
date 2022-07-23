@@ -7,7 +7,6 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace Maze_Generator
 {
     public class MazeGenerator
@@ -185,10 +184,8 @@ namespace Maze_Generator
         
         private bool IsAValidExit(int[,] maze, Coordinate coordinate)
         {
-            if ((coordinate.x == 0 && coordinate.y == 0) 
-                || (coordinate.x == 0 && coordinate.y == maxHeight - 1)
-                || (coordinate.x == maxWidth - 1 && coordinate.y == maxHeight - 1) 
-                || (coordinate.x == maxWidth - 1 && coordinate.y == 0))
+            if ((coordinate.x == 0 && (coordinate.y == 0 || coordinate.y == maxHeight - 1) ||
+                 coordinate.x == maxWidth - 1 && (coordinate.y == 0 || coordinate.y == maxHeight - 1)))
             {
                 return false;
             }

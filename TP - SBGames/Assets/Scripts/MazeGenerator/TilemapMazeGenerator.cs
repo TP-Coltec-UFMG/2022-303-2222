@@ -39,10 +39,10 @@ namespace Maze_Generator {
             for (int i = 0; i < realWidthOfTilemap; i++) {
                 for (int j = 0; j < realHeightOfTilemap; j++) {
                     if (tiles[i, j] == WALL) {
-                        wallTilemap.SetTile(new Vector3Int(-i + (tilemapSize.x / 2), -j + (tilemapSize.y / 2), 0), wallTile);
+                        wallTilemap.SetTile(new Vector3Int(j, -i, 0), wallTile);
                     }
                     else {
-                        groundTilemap.SetTile(new Vector3Int(-i + tilemapSize.x / 2, -j + tilemapSize.y / 2, 0), groundTile);
+                        groundTilemap.SetTile(new Vector3Int(j , -i, 0), groundTile);
                     }
                 }
             }
