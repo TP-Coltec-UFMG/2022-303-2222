@@ -51,7 +51,6 @@ namespace Maze_Generator {
                     }
                 }
             }
-
             exitObject.transform.position = new Vector3((float) maze.exit.y + 0.5f, (float) -maze.exit.x + 0.5f, 0);
         }
 

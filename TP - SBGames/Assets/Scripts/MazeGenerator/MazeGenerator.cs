@@ -48,7 +48,8 @@ namespace Maze_Generator
                BreakWall(maze, value.Item1, value.Item2); 
             }
             Coordinate exit = GenerateExit(maze);
-            return new Maze(maze, exit);
+            Coordinate entry = GenerateEntry(maze, exit);
+            return new Maze(maze, entry, exit);
         }
 
         private int[,] InitMaze()
@@ -197,7 +198,7 @@ namespace Maze_Generator
                 if (maze[value.x, value.y] == WALL) numberOfWalls++;
                 if (numberOfWalls > 2) return false;
             }
-
+           
             return true;
         } 
         
@@ -211,6 +212,35 @@ namespace Maze_Generator
             }
             maze[exit.x, exit.y] = PASSAGE;
             return new Coordinate(exit.x, exit.y);
+        }
+        private Coordinate GenerateEntry(int[,] maze, Coordinate exit) {
+            int exitQuadrant = getQuadrant(exit);
+            if (exitQuadrant == 1) {
+                return new Coordinate(maxWidth - 2, maxHeight - 2);
+            }
+            if (exitQuadrant == 2) {
+                return new Coordinate(maxWidth - 2, 1);
+            }
+            if (exitQuadrant == 3) {
+                return new Coordinate(1, maxHeight - 2);
+            }
+            else {
+                return new Coordinate(1, 1);
+            }
+        }
+        private int getQuadrant(Coordinate position) {
+            if (position.x <= Math.Floor((float) maxWidth / 2f) && position.y <= Math.Floor((float)maxHeight / 2f)) {
+                return 1;
+            }
+            else if (position.x <= Math.Floor((float)maxWidth / 2f) && position.y >= Math.Floor((float)maxHeight)) {
+                return 2;
+            }
+            else if (position.x > Math.Floor((float)maxWidth / 2f) && position.y <= Math.Floor((float)maxHeight / 2f)) {
+                return 3;
+            }
+            else {
+                return 4;
+            }
         }
     }
 }
