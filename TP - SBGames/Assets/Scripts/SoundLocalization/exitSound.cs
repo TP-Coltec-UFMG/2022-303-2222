@@ -2,13 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class exitSound : MonoBehaviour
+public class ExitSound : MonoBehaviour
 {
-    private AudioSource exitAudio;
-    private void Start() {
+    AudioSource exitAudio;
+    public static bool exitMaze = false;
+    void Start() 
+    {
         exitAudio = GetComponent<AudioSource>();
     }
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("Player")) exitAudio.Play();
+
+    void Update()
+    {
+        if (exitMaze)
+        {
+            if(!exitAudio.isPlaying) exitAudio.Play();
+            Debug.Log("SAIU");
+
+            exitMaze = false;
+        }
     }
 }

@@ -35,73 +35,45 @@ public class SoundLocalization : MonoBehaviour
     {         
         if(rightRay.collider != null) 
         {
-            if(rightRay.distance < rayDistance)
-            {
-                rightAudio.volume = 1 - rightRay.distance/rayDistance;
-            }
-            else
-            {
-                rightAudio.Stop();
-            }
+            if(rightRay.distance < rayDistance) rightAudio.volume = 1 - rightRay.distance/rayDistance;
+            else rightAudio.Stop();
 
-            if(!rightAudio.isPlaying)
-            {
-                rightAudio.Play();
-            } 
+            if(!rightAudio.isPlaying) rightAudio.Play();
         }
 
         if(leftRay.collider != null) 
         {
-            if(leftRay.distance < rayDistance)
-            {
-                leftAudio.volume = 1 - leftRay.distance/rayDistance;
-            }
-            else
-            {
-                leftAudio.Stop();
-            }
-
-            if(!leftAudio.isPlaying)
-            {
-                leftAudio.Play();
-            } 
+            if(leftRay.distance < rayDistance) leftAudio.volume = 1 - leftRay.distance/rayDistance;
+            else leftAudio.Stop();
+            
+            if(!leftAudio.isPlaying) leftAudio.Play();
         }
 
         if(upRay.collider != null) 
         {
-            if(upRay.distance < rayDistance)
-            {
-                upAudio.volume = 1 - upRay.distance/rayDistance;
-            }
-            else
-            {
-                upAudio.Stop();
-            }
-
-            if(!upAudio.isPlaying)
-            {
-                upAudio.Play();
-            } 
+            if(upRay.distance < rayDistance) upAudio.volume = 1 - upRay.distance/rayDistance;
+            else upAudio.Stop();
+            
+            if(!upAudio.isPlaying) upAudio.Play();
         }
-
 
         if(downRay.collider != null) 
         {
-            if(downRay.distance < rayDistance)
-            {
-                downAudio.volume = 1 - downRay.distance/rayDistance;
-            }
-            else
-            {
-                downAudio.Stop();
-            }
-
-            if(!downAudio.isPlaying)
-            {
-                downAudio.Play();
-            } 
+            if(downRay.distance < rayDistance) downAudio.volume = 1 - downRay.distance/rayDistance;
+            else downAudio.Stop();
+            
+            if(!downAudio.isPlaying) downAudio.Play();
         }
 
+        if(rightRay.collider.CompareTag("CollidableAudio") && leftRay.collider.CompareTag("CollidableAudio") && upRay.collider.CompareTag("CollidableAudio") && downRay.collider.CompareTag("CollidableAudio"))
+        {
+            rightAudio.Stop();
+            leftAudio.Stop();
+            upAudio.Stop();
+            downAudio.Stop();
+            ExitSound.exitMaze = true;
+        }
+        
     } 
     
     void OnDrawGizmos()
