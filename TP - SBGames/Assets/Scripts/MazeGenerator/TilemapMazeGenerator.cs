@@ -9,7 +9,8 @@ namespace Maze_Generator {
         public Tilemap wallTilemap;
         public Tile wallTile;
         public Tile groundTile;
-        public AudioSource exitObject;
+        public GameObject exitObject;
+        
         [Range(1, 200)]
         public int tilemapDimension;
         private int realHeightOfTilemap;
@@ -19,11 +20,13 @@ namespace Maze_Generator {
         private const int WALL_SIZE = 1;
         private Maze maze;
         private Vector3Int tilemapSize;
+        GameObject newExitAudio;
 
         private void Start()
         {
             ClearMaze();
             GenerateTileMapMaze();
+            exitObject.transform.parent = null;
         } 
         
         public void ClearMaze()
@@ -48,7 +51,8 @@ namespace Maze_Generator {
                     }
                 }
             }
-            Instantiate(exitObject, new Vector3((float) maze.exit.y + 0.5f, (float) -maze.exit.x + 0.5f, 0), Quaternion.identity);
+
+            exitObject.transform.position = new Vector3((float) maze.exit.y + 0.5f, (float) -maze.exit.x + 0.5f, 0);
         }
 
         private Maze GenerateMaze() {

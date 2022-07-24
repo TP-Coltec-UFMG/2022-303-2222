@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
+#if UNITY_EDITOR
 namespace Maze_Generator
 {
     [CustomEditor(typeof(TilemapMazeGenerator))]
@@ -24,3 +25,4 @@ namespace Maze_Generator
         }
     }
 }
+#endif
