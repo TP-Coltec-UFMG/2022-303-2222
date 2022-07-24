@@ -232,7 +232,7 @@ namespace Maze_Generator
             if (position.x <= Math.Floor((float) maxWidth / 2f) && position.y <= Math.Floor((float)maxHeight / 2f)) {
                 return 1;
             }
-            else if (position.x <= Math.Floor((float)maxWidth / 2f) && position.y >= Math.Floor((float)maxHeight)) {
+            else if (position.x <= Math.Floor((float)maxWidth / 2f) && position.y >= Math.Floor((float)maxHeight / 2f)) {
                 return 2;
             }
             else if (position.x > Math.Floor((float)maxWidth / 2f) && position.y <= Math.Floor((float)maxHeight / 2f)) {

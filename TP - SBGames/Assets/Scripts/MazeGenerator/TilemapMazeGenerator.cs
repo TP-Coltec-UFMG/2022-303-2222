@@ -10,7 +10,6 @@ namespace Maze_Generator {
         public Tile wallTile;
         public Tile groundTile;
         public GameObject exitObject;
-        
         [Range(1, 200)]
         public int tilemapDimension;
         private int realHeightOfTilemap;
@@ -20,7 +19,7 @@ namespace Maze_Generator {
         private const int WALL_SIZE = 1;
         private Maze maze;
         private Vector3Int tilemapSize;
-        GameObject newExitAudio;
+        [SerializeField] private GameObject player;
 
         private void Start()
         {
@@ -51,6 +50,7 @@ namespace Maze_Generator {
                     }
                 }
             }
+            player.transform.position = new Vector3((float)maze.entry.y + 0.5f, (float)-maze.entry.x + 0.5f, 0);
             exitObject.transform.position = new Vector3((float) maze.exit.y + 0.5f, (float) -maze.exit.x + 0.5f, 0);
         }
 
