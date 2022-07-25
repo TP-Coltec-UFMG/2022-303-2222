@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        movePoint.transform.position = gameObject.transform.position;
+
         if(Input.GetKeyDown(KeyCode.RightArrow)) 
         {
             xAxisInput = 1;
@@ -49,9 +51,11 @@ public class PlayerMovement : MonoBehaviour
                 if((Mathf.Abs(xAxisInput) == 1f))
                 {
                     movePoint.position += new Vector3(xAxisInput, 0f, 0f);
-                    do{
+                    do
+                    {
                         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
-                    }while(Vector3.Distance(transform.position, movePoint.position) > .05f);
+                    }
+                    while(Vector3.Distance(transform.position, movePoint.position) > 0);
                 }
             }
             
@@ -60,9 +64,11 @@ public class PlayerMovement : MonoBehaviour
                 if(Mathf.Abs(yAxisInput) == 1f)
                 {
                     movePoint.position += new Vector3(0f, yAxisInput, 0f); 
-                    do{
+                    do
+                    {
                         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
-                    }while(Vector3.Distance(transform.position, movePoint.position) > .05f);             
+                    }
+                    while(Vector3.Distance(transform.position, movePoint.position) > 0);             
                 }
             }
         }
