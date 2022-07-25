@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundLocalization : MonoBehaviour
@@ -6,10 +7,16 @@ public class SoundLocalization : MonoBehaviour
     [SerializeField] AudioSource leftAudio;
     [SerializeField] AudioSource upAudio;
     [SerializeField] AudioSource downAudio;
+    [SerializeField] AudioSource downRightAudio;
+    [SerializeField] AudioSource downLeftAudio;
+    [SerializeField] AudioSource upRightAudio;
+    [SerializeField] AudioSource upLeftAudio;
     RaycastHit2D rightRay, leftRay, upRay, downRay;
     [SerializeField] float rayDistance = 2f;
     Vector2 rightPivot, leftPivot, upPivot, downPivot;
     public bool EnableAudioLocalization = true;
+    public bool anyAudioPlaying = false;
+    [SerializeField] float maxTime;
     
     void Start()
     {
@@ -32,48 +39,100 @@ public class SoundLocalization : MonoBehaviour
     }
 
     void AudioController()
-    {         
-        if(rightRay.collider != null) 
+    {
+        if(upRay.collider != null && rightRay.collider != null)
         {
-            if(rightRay.distance < rayDistance) rightAudio.volume = 1 - rightRay.distance/rayDistance;
-            else rightAudio.Stop();
+            if(!upRightAudio.isPlaying)
+            {
+                upRightAudio.Play();
+                Debug.Log("Up Right");
+            }
+            return;
+        }
 
-            if(!rightAudio.isPlaying) rightAudio.Play();
+        if(upRay.collider != null && leftRay.collider != null)
+        {
+            if(!upLeftAudio.isPlaying)
+            {
+                upLeftAudio.Play();
+                Debug.Log("Up Left");
+            }
+            return;
+        }
+
+        if(downRay.collider != null && rightRay.collider != null)
+        {
+            if(!downRightAudio.isPlaying)
+            {
+                downRightAudio.Play();
+                Debug.Log("Down Right");
+            }
+            return;
+        }
+
+        if(downRay.collider != null && leftRay.collider != null)
+        {
+            if(!downLeftAudio.isPlaying)
+            {
+                downLeftAudio.Play();
+                Debug.Log("Down Left");
+            }
+            return;
+        }
+
+        if(rightRay.collider != null)
+        {
+            if(!rightAudio.isPlaying)
+            {
+                rightAudio.Play();
+                Debug.Log("Right");
+            } 
         }
 
         if(leftRay.collider != null) 
         {
-            if(leftRay.distance < rayDistance) leftAudio.volume = 1 - leftRay.distance/rayDistance;
-            else leftAudio.Stop();
-            
-            if(!leftAudio.isPlaying) leftAudio.Play();
+            if(!leftAudio.isPlaying)
+            {
+                leftAudio.Play();
+                Debug.Log("Left");
+            }
         }
 
         if(upRay.collider != null) 
-        {
-            if(upRay.distance < rayDistance) upAudio.volume = 1 - upRay.distance/rayDistance;
-            else upAudio.Stop();
-            
-            if(!upAudio.isPlaying) upAudio.Play();
+        {            
+            if(!upAudio.isPlaying)
+            {
+                upAudio.Play();
+                Debug.Log("Up");
+            }
         }
 
         if(downRay.collider != null) 
         {
-            if(downRay.distance < rayDistance) downAudio.volume = 1 - downRay.distance/rayDistance;
-            else downAudio.Stop();
-            
-            if(!downAudio.isPlaying) downAudio.Play();
+            if(!downAudio.isPlaying)
+            {
+                downAudio.Play();
+                Debug.Log("Down");
+            }
         }
 
-        if(rightRay.collider.CompareTag("CollidableAudio") && leftRay.collider.CompareTag("CollidableAudio") && upRay.collider.CompareTag("CollidableAudio") && downRay.collider.CompareTag("CollidableAudio"))
+        if(rightRay.collider != null && leftRay.collider != null && upRay.collider != null && downRay.collider != null)
         {
-            rightAudio.Stop();
-            leftAudio.Stop();
-            upAudio.Stop();
-            downAudio.Stop();
-            ExitSound.exitMaze = true;
+            if(rightRay.collider.CompareTag("CollidableAudio") && leftRay.collider.CompareTag("CollidableAudio") && upRay.collider.CompareTag("CollidableAudio") && downRay.collider.CompareTag("CollidableAudio"))
+            {
+                rightAudio.Stop();
+                leftAudio.Stop();
+                upAudio.Stop();
+                downAudio.Stop();
+                upRightAudio.Stop();
+                upLeftAudio.Stop();
+                downRightAudio.Stop();
+                downLeftAudio.Stop();
+
+                ExitSound.exitMaze = true;
+            }
         }
-        
+
     } 
     
     void OnDrawGizmos()
