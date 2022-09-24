@@ -40,6 +40,25 @@ public class SoundLocalization : MonoBehaviour
 
     void AudioController()
     {
+        if(rightRay.collider != null && leftRay.collider != null && upRay.collider != null && downRay.collider != null)
+        {
+            if(rightRay.collider.CompareTag("CollidableAudio") && leftRay.collider.CompareTag("CollidableAudio") && upRay.collider.CompareTag("CollidableAudio") && downRay.collider.CompareTag("CollidableAudio"))
+            {
+                rightAudio.Stop();
+                leftAudio.Stop();
+                upAudio.Stop();
+                downAudio.Stop();
+                upRightAudio.Stop();
+                upLeftAudio.Stop();
+                downRightAudio.Stop();
+                downLeftAudio.Stop();
+
+                ExitSound.exitMaze = true;
+            }
+        }
+
+
+
         if(upRay.collider != null && rightRay.collider != null)
         {
             if(!upRightAudio.isPlaying)
@@ -113,23 +132,6 @@ public class SoundLocalization : MonoBehaviour
             {
                 downAudio.Play();
                 Debug.Log("Down");
-            }
-        }
-
-        if(rightRay.collider != null && leftRay.collider != null && upRay.collider != null && downRay.collider != null)
-        {
-            if(rightRay.collider.CompareTag("CollidableAudio") && leftRay.collider.CompareTag("CollidableAudio") && upRay.collider.CompareTag("CollidableAudio") && downRay.collider.CompareTag("CollidableAudio"))
-            {
-                rightAudio.Stop();
-                leftAudio.Stop();
-                upAudio.Stop();
-                downAudio.Stop();
-                upRightAudio.Stop();
-                upLeftAudio.Stop();
-                downRightAudio.Stop();
-                downLeftAudio.Stop();
-
-                ExitSound.exitMaze = true;
             }
         }
 
