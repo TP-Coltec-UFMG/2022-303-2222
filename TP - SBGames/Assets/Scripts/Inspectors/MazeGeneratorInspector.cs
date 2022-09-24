@@ -22,6 +22,10 @@ namespace Maze_Generator
             {
                 tilemapMazeGenerator.ClearMaze();
             }
+            if(GUILayout.Button("Next Level Maze"))
+            {
+                tilemapMazeGenerator.GenerateNextLevelMaze();
+            }            
         }
     }
 }
