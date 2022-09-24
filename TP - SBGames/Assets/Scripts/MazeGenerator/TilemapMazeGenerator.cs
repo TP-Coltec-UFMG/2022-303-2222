@@ -54,6 +54,14 @@ namespace Maze_Generator {
             exitObject.transform.position = new Vector3((float) maze.exit.y + 0.5f, (float) -maze.exit.x + 0.5f, 0);
         }
 
+        public void GenerateNextLevelMaze()
+        {
+            ClearMaze();
+            tilemapDimension += 1;
+            GenerateTileMapMaze();
+            exitObject.transform.parent = null;
+        }
+
         private Maze GenerateMaze() {
             MazeGenerator mazeGenerator = new MazeGenerator(tilemapSize.x, tilemapSize.y);
             return mazeGenerator.GenerateMaze();
