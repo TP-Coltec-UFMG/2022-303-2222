@@ -40,9 +40,12 @@ public class SoundLocalization : MonoBehaviour
 
     void AudioController()
     {
+
+        if (AnyAudioIsPlaying()) return;
+
         if(rightRay.collider != null && leftRay.collider != null && upRay.collider != null && downRay.collider != null)
         {
-            if(rightRay.collider.CompareTag("CollidableAudio") && leftRay.collider.CompareTag("CollidableAudio") && upRay.collider.CompareTag("CollidableAudio") && downRay.collider.CompareTag("CollidableAudio"))
+            if(rightRay.collider.CompareTag("ExitCollidableAudio") && leftRay.collider.CompareTag("ExitCollidableAudio") && upRay.collider.CompareTag("ExitCollidableAudio") && downRay.collider.CompareTag("ExitCollidableAudio"))
             {
                 rightAudio.Stop();
                 leftAudio.Stop();
@@ -52,91 +55,43 @@ public class SoundLocalization : MonoBehaviour
                 upLeftAudio.Stop();
                 downRightAudio.Stop();
                 downLeftAudio.Stop();
-
                 ExitSound.exitMaze = true;
             }
         }
 
-
-
-        if(upRay.collider != null && rightRay.collider != null)
-        {
-            if(!upRightAudio.isPlaying)
-            {
-                upRightAudio.Play();
-                Debug.Log("Up Right");
-            }
+        if (upRay.collider != null && !upRay.collider.CompareTag("ExitCollidableAudio")){
+            if (leftRay.collider != null && !upLeftAudio.isPlaying) upLeftAudio.Play();
+            else if (rightRay.collider && !upRightAudio.isPlaying) upRightAudio.Play();
+            else if (!upAudio.isPlaying) upAudio.Play();
             return;
         }
 
-        if(upRay.collider != null && leftRay.collider != null)
-        {
-            if(!upLeftAudio.isPlaying)
-            {
-                upLeftAudio.Play();
-                Debug.Log("Up Left");
-            }
+        if (downRay.collider != null && !downRay.collider.CompareTag("ExitCollidableAudio")){
+            if (leftRay.collider != null && !downLeftAudio.isPlaying) downLeftAudio.Play();
+            else if (rightRay.collider != null && !downRightAudio.isPlaying) downRightAudio.Play();
+            else if (!downAudio.isPlaying) downAudio.Play();
             return;
         }
 
-        if(downRay.collider != null && rightRay.collider != null)
+        if(rightRay.collider != null && !rightRay.collider.CompareTag("ExitCollidableAudio"))
         {
-            if(!downRightAudio.isPlaying)
-            {
-                downRightAudio.Play();
-                Debug.Log("Down Right");
-            }
+            if(!rightAudio.isPlaying) rightAudio.Play();
             return;
         }
 
-        if(downRay.collider != null && leftRay.collider != null)
+        if(leftRay.collider != null && !leftRay.collider.CompareTag("ExitCollidableAudio")) 
         {
-            if(!downLeftAudio.isPlaying)
-            {
-                downLeftAudio.Play();
-                Debug.Log("Down Left");
-            }
+            if(!leftAudio.isPlaying) leftAudio.Play();
             return;
-        }
-
-        if(rightRay.collider != null)
-        {
-            if(!rightAudio.isPlaying)
-            {
-                rightAudio.Play();
-                Debug.Log("Right");
-            } 
-        }
-
-        if(leftRay.collider != null) 
-        {
-            if(!leftAudio.isPlaying)
-            {
-                leftAudio.Play();
-                Debug.Log("Left");
-            }
-        }
-
-        if(upRay.collider != null) 
-        {            
-            if(!upAudio.isPlaying)
-            {
-                upAudio.Play();
-                Debug.Log("Up");
-            }
-        }
-
-        if(downRay.collider != null) 
-        {
-            if(!downAudio.isPlaying)
-            {
-                downAudio.Play();
-                Debug.Log("Down");
-            }
         }
 
     } 
-    
+    bool AnyAudioIsPlaying()
+    {
+        if (rightAudio.isPlaying || upAudio.isPlaying || leftAudio.isPlaying || downAudio.isPlaying || upLeftAudio.isPlaying || upRightAudio.isPlaying || downRightAudio.isPlaying || downLeftAudio.isPlaying) return true;
+        return false;
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
