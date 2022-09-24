@@ -10,6 +10,16 @@
 - A navegação entre os botões pode ser feita através do teclado, usando as setinhas
 - O idioma poderá ser alterado entre inglês e português
 - Somente as funcionalidades de navegação entre menus foi implementada ainda
+# Narrativa
+## Ambiente
+A história se passa em 2222, assim dando origem ao nome do jogo, e é construida em cima de um cenário distópico causado por uma grande empresa, Corporação Elav, que explorou exaustivamente os recursos naturais do mundo, especialmente um metal chamado cinzal, que possibilitou o desenvolvimento de tecnologias mais avançadas. Tal metal, quando extraído e tratado, além de produzir gases poluentes e lixo, também liberava uma névoa densa e escura, que mancha permanentemente tudo aquilo que entra em contato, e consequentemente, se tornou parte de tudo. Por causa disso, as cores do mundo começaram a desaparecer e tudo se tornou branco e preto.
+<p align="center"><img width=300 height=300 src="https://user-images.githubusercontent.com/94989737/192112147-556e5a9f-225e-4078-ae92-67a60ec57777.png" alt="Imagem monocromática (preto e branco) de uma cidade com arranha-céus, na qual não se consegue nem ver o chão por este estar coberto por uma névoa cinza e densa.">
+<img width=300 height=300 src="https://user-images.githubusercontent.com/94989737/192112252-e7534ca6-a3e8-4917-a5e6-66dfbaa2a8e2.png" alt="Imagem monocromática (preto e branco) de uma cidade, na qual está chovendo, com prédios altos e nuvens cinzas."</p>
+<h6 align="center">Artes criadas pela Inteligência Artificial DALL-E para ilustrar qual seria a ideia do mundo </h6>
+
+## Pontapé Inicial da História
+A protagonista, Ada, é a nova lider de pesquisa do departamento de estudos de nanotecnologia da Elav, sendo responsável pela pesquisa de propriedades do cinzal que pudessem ser aplicadas nessa área. Durante sua jornada, obteve acesso a única área do mundo na qual esse metal era extraído. Porém, quanto mais ela descobre sobre esse lugar, mais e mais segredos são revelados e Ada se encontra cercada de mistérios e perguntas sem respostas, a levando a até mesmo a uma conexão entre a exploração do metal e seu avô, que havia desaparecido alguns anos atrás. Todas essas perguntas sem respostas a levaram a explorar um labirinto antigo que ela acaba descobrindo durante sua pesquisa na área de extração do cinzal. 
+<p align="center"><img width=250 height=300 src="https://user-images.githubusercontent.com/94989737/192112910-19d8abf3-512f-4214-96cb-9773a39de558.png" alt="Ilustração da protagonista Ada, que é uma mulher negra vestindo um jaleco branco de cientista, uma mochila de viagem que tem uma alça que atravessa diagonalmente o peitoral, botas pretas, calça preta e uma blusa cor de vinho"></p>
 
 # Menu Principal
 
