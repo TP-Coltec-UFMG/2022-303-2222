@@ -751,7 +751,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7771084, y: 1}
+    m_SensorSize: {x: 1.7805755, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3853,7 +3853,7 @@ MonoBehaviour:
   wallTile: {fileID: 11400000, guid: 9bafad717a8a0d34c9ad44def34108e9, type: 2}
   groundTile: {fileID: 11400000, guid: a045a30d628c0ed40a6753c7993fc181, type: 2}
   exitObject: {fileID: 1554736811}
-  tilemapDimension: 5
+  tilemapDimension: 2
   player: {fileID: 1644293739}
 --- !u!4 &1990217622
 Transform:
@@ -3879,7 +3879,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3051076879253018326, guid: 021fc3f38e489bc488b8634558ab1cae, type: 3}
       propertyPath: EnableAudioLocalization
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3051076879253018330, guid: 021fc3f38e489bc488b8634558ab1cae, type: 3}
       propertyPath: m_RootOrder
