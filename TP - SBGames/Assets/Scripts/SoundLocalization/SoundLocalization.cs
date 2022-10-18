@@ -37,7 +37,6 @@ public class SoundLocalization : MonoBehaviour
 
         if(EnableAudioLocalization) AudioController();
     }
-
     void AudioController()
     {
 

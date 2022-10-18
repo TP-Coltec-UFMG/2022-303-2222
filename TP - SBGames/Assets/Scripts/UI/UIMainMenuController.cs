@@ -8,7 +8,7 @@ public class UIMainMenuController : UIGenericMenu
     public void StartGame(string nextSceneName)
     {
         Debug.Log("Iniciou o jogo");
-        // SceneManager.LoadScene(nextSceneName);
+        SceneManager.LoadScene(nextSceneName);
     }
     
     public void OpenOptionsMenu(GameObject optionsMenu)
