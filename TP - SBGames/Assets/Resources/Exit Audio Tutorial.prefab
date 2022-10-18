@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6296518483810396004}
   - component: {fileID: 6296518483810396005}
-  - component: {fileID: 6296518483810396006}
   - component: {fileID: 6296518483810395931}
+  - component: {fileID: 8095243289939808238}
   m_Layer: 0
-  m_Name: Exit Audio
+  m_Name: Exit Audio Tutorial
   m_TagString: ExitCollidableAudio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,19 +130,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6296518483810396006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6296518483810396007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaa41bbbe9c003a4e943d7fade26b202, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilemapMazeGenerator: {fileID: 0}
 --- !u!58 &6296518483810395931
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -159,3 +146,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3
+--- !u!114 &8095243289939808238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6296518483810396007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c893f11c57ce674e91ec6512887b365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}

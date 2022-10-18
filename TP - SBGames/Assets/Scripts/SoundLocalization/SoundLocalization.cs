@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundLocalization : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class SoundLocalization : MonoBehaviour
     [SerializeField] float rayDistance = 2f;
     Vector2 rightPivot, leftPivot, upPivot, downPivot;
     public bool EnableAudioLocalization = true;
-    public bool anyAudioPlaying = false;
     [SerializeField] float maxTime;
     
     void Start()
@@ -39,7 +39,6 @@ public class SoundLocalization : MonoBehaviour
     }
     void AudioController()
     {
-
         if (AnyAudioIsPlaying()) return;
 
         if(rightRay.collider != null && leftRay.collider != null && upRay.collider != null && downRay.collider != null)
@@ -54,7 +53,14 @@ public class SoundLocalization : MonoBehaviour
                 upLeftAudio.Stop();
                 downRightAudio.Stop();
                 downLeftAudio.Stop();
-                ExitSound.exitMaze = true;
+                if (SceneManager.GetActiveScene().name == "Tutorial")
+                {
+                    TutorialExitSound.exitMaze = true;
+                }
+                else
+                {
+                    ExitSound.exitMaze = true;
+                }
             }
         }
 
@@ -81,7 +87,6 @@ public class SoundLocalization : MonoBehaviour
         if(leftRay.collider != null && !leftRay.collider.CompareTag("ExitCollidableAudio")) 
         {
             if(!leftAudio.isPlaying) leftAudio.Play();
-            return;
         }
 
     } 
