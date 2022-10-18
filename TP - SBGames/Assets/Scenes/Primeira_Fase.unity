@@ -546,7 +546,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7761194, y: 1}
+    m_SensorSize: {x: 1.7805755, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1811,7 +1811,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6296518483810395931, guid: 5fc95804e93474e418ecff7cba772e93, type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296518483810395931, guid: 5fc95804e93474e418ecff7cba772e93, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6296518483810396004, guid: 5fc95804e93474e418ecff7cba772e93, type: 3}
       propertyPath: m_RootOrder
@@ -1857,6 +1861,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6296518483810396006, guid: 5fc95804e93474e418ecff7cba772e93, type: 3}
+      propertyPath: tilemapMazeGenerator
+      value: 
+      objectReference: {fileID: 1851242033}
     - target: {fileID: 6296518483810396007, guid: 5fc95804e93474e418ecff7cba772e93, type: 3}
       propertyPath: m_Name
       value: Exit Audio
@@ -3841,6 +3849,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3051076879253018325, guid: 021fc3f38e489bc488b8634558ab1cae, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3051076879253018326, guid: 021fc3f38e489bc488b8634558ab1cae, type: 3}
       propertyPath: EnableAudioLocalization
       value: 1

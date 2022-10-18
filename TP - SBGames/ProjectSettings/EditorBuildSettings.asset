@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DevSceneMoreira.unity
     guid: 19880332b11e6a9418acac4133c0b9fc
+  - enabled: 1
+    path: Assets/Scenes/Primeira_Fase.unity
+    guid: 9b5aa5cca7b585580ba069271e3cbf1c
   m_configObjects: {}
