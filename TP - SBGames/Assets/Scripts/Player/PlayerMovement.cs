@@ -1,88 +1,110 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
-[RequireComponent(typeof(Collider2D))]
 public class PlayerMovement : MonoBehaviour
 {
     [Range(0, 10)] [SerializeField] float speed = 1f;
     [SerializeField] Transform movePoint;
     [SerializeField] LayerMask wallCollisionLayer;
-    float xAxisInput, yAxisInput;
+    private float xAxisInput;
+    private float yAxisInput;
+    
+    private float timer = 0;
+    private bool playerCanMove = true;
+    private const float MAX_TIME = 1;
+
     void Start()
     {
         movePoint.parent = null;
     }
 
-    void DelayAfterMovement()
+    void MovePlayer()
     {
-        const float delayTime = 3000;
-        float time_marker = delayTime;
-
-        while (time_marker > 0)
+        if (!playerCanMove)
         {
-            time_marker -= Time.deltaTime;
+            return;
         }
         
-        Debug.Log("acabou");
-    }
-
-    void Update()
-    {
+        Vector3 previousPosition = gameObject.transform.position;
         movePoint.transform.position = gameObject.transform.position;
 
-        if(Input.GetKeyDown(KeyCode.RightArrow)) 
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             xAxisInput = 1;
         }
-        else if(Input.GetKeyDown(KeyCode.LeftArrow)) 
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             xAxisInput = -1;
         }
         else xAxisInput = 0;
 
-        if(Input.GetKeyDown(KeyCode.UpArrow)) 
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             yAxisInput = 1;
         }
-        else if(Input.GetKeyDown(KeyCode.DownArrow)) 
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             yAxisInput = -1;
-        } 
+        }
         else yAxisInput = 0;
 
 
-        if(Vector3.Distance(transform.position, movePoint.position) <= .05f)
+        if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
         {
-            if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(xAxisInput, 0f, 0f), .2f, wallCollisionLayer))
+            if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(xAxisInput, 0f, 0f), .2f, wallCollisionLayer))
             {
-                if((Mathf.Abs(xAxisInput) == 1f))
+                if ((Mathf.Abs(xAxisInput) == 1f))
                 {
                     movePoint.position += new Vector3(xAxisInput, 0f, 0f);
                     do
                     {
-                        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
-                    }
-                    while(Vector3.Distance(transform.position, movePoint.position) > 0);
+                        transform.position = Vector3.MoveTowards(transform.position, movePoint.position,
+                            speed * Time.deltaTime);
+                    } while (Vector3.Distance(transform.position, movePoint.position) > 0);
                 }
             }
-            
-            if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, yAxisInput, 0f), .2f, wallCollisionLayer))
+
+            if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, yAxisInput, 0f), .2f, wallCollisionLayer))
             {
-                if(Mathf.Abs(yAxisInput) == 1f)
+                if (Mathf.Abs(yAxisInput) == 1f)
                 {
-                    movePoint.position += new Vector3(0f, yAxisInput, 0f); 
+                    movePoint.position += new Vector3(0f, yAxisInput, 0f);
                     do
                     {
-                        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
-                    }
-                    while(Vector3.Distance(transform.position, movePoint.position) > 0);             
+                        transform.position = Vector3.MoveTowards(transform.position, movePoint.position,
+                            speed * Time.deltaTime);
+                    } while (Vector3.Distance(transform.position, movePoint.position) > 0);
                 }
             }
         }
-        DelayAfterMovement();
+
+        if (previousPosition != gameObject.transform.position)
+        {
+            playerCanMove = false;
+        }
     }
 
+    void Update()
+    {
+        if (timer == 0)
+        {
+            playerCanMove = true;
+        } 
+        
+        MovePlayer();
 
+        if (!playerCanMove)
+        {
+            timer += Time.deltaTime;
+        }
+        
+        if (timer >= MAX_TIME)
+        {
+            timer = 0;
+            playerCanMove = true;
+        }
+    }
 }
