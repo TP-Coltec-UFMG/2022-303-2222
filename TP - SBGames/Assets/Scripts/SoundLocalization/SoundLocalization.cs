@@ -12,6 +12,8 @@ public class SoundLocalization : MonoBehaviour
     [SerializeField] AudioSource downLeftAudio;
     [SerializeField] AudioSource upRightAudio;
     [SerializeField] AudioSource upLeftAudio;
+    [SerializeField] AudioSource audioTutorial;
+
     RaycastHit2D rightRay, leftRay, upRay, downRay;
     [SerializeField] float rayDistance = 2f;
     Vector2 rightPivot, leftPivot, upPivot, downPivot;
@@ -40,7 +42,10 @@ public class SoundLocalization : MonoBehaviour
     void AudioController()
     {
         if (AnyAudioIsPlaying()) return;
-
+        if (Input.GetKeyDown("space")){
+            // Tocar o som do tutorial e ficar numa "tela diferente"
+            return;
+        }
         if(rightRay.collider != null && leftRay.collider != null && upRay.collider != null && downRay.collider != null)
         {
             if(rightRay.collider.CompareTag("ExitCollidableAudio") && leftRay.collider.CompareTag("ExitCollidableAudio") && upRay.collider.CompareTag("ExitCollidableAudio") && downRay.collider.CompareTag("ExitCollidableAudio"))
