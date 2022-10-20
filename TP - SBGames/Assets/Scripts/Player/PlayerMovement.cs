@@ -16,9 +16,23 @@ public class PlayerMovement : MonoBehaviour
     private bool playerCanMove = true;
     private const float MAX_TIME = 1;
 
+    private SoundLocalization soundLocalizationScript;
+
     void Start()
     {
+        soundLocalizationScript = GetComponent<SoundLocalization>();
         movePoint.parent = null;
+    }
+
+    void PlayTutorialAudio()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!soundLocalizationScript.tutorialAudio.isPlaying)
+            {
+                soundLocalizationScript.PlayTutorialAudio();
+            }
+        }
     }
 
     void MovePlayer()
@@ -89,19 +103,21 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (timer == 0)
+        PlayTutorialAudio();
+        
+        if (timer == 0 && !soundLocalizationScript.tutorialAudio.isPlaying)
         {
             playerCanMove = true;
         } 
         
-        MovePlayer();
+        if(!soundLocalizationScript.tutorialAudio.isPlaying) MovePlayer();
 
-        if (!playerCanMove)
+        if (!playerCanMove && !soundLocalizationScript.tutorialAudio.isPlaying)
         {
             timer += Time.deltaTime;
         }
         
-        if (timer >= MAX_TIME)
+        if (timer >= MAX_TIME && !soundLocalizationScript.tutorialAudio.isPlaying)
         {
             timer = 0;
             playerCanMove = true;
