@@ -15,6 +15,19 @@ public class PlayerMovement : MonoBehaviour
         movePoint.parent = null;
     }
 
+    void DelayAfterMovement()
+    {
+        const float delayTime = 3000;
+        float time_marker = delayTime;
+
+        while (time_marker > 0)
+        {
+            time_marker -= Time.deltaTime;
+        }
+        
+        Debug.Log("acabou");
+    }
+
     void Update()
     {
         movePoint.transform.position = gameObject.transform.position;
@@ -22,24 +35,20 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.RightArrow)) 
         {
             xAxisInput = 1;
-            //AudioSource.Play();
         }
         else if(Input.GetKeyDown(KeyCode.LeftArrow)) 
         {
             xAxisInput = -1;
-            //AudioSource.Play();
         }
         else xAxisInput = 0;
 
         if(Input.GetKeyDown(KeyCode.UpArrow)) 
         {
             yAxisInput = 1;
-            //AudioSource.Play();
         }
         else if(Input.GetKeyDown(KeyCode.DownArrow)) 
         {
             yAxisInput = -1;
-            //AudioSource.Play();
         } 
         else yAxisInput = 0;
 
@@ -72,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+        DelayAfterMovement();
     }
 
 
