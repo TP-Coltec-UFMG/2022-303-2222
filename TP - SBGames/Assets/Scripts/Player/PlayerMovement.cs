@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -11,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask wallCollisionLayer;
     private float xAxisInput;
     private float yAxisInput;
-    
+
     private float timer = 0;
     private bool playerCanMove = true;
     private const float MAX_TIME = 1;
@@ -101,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Update()
+    void Update() 
     {
         PlayTutorialAudio();
         
@@ -122,5 +121,5 @@ public class PlayerMovement : MonoBehaviour
             timer = 0;
             playerCanMove = true;
         }
-    }
+    }    
 }

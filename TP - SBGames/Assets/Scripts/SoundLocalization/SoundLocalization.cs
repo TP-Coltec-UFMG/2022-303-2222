@@ -68,6 +68,7 @@ public class SoundLocalization : MonoBehaviour
                 leftRay.collider.CompareTag("ExitCollidableAudio") &&
                 upRay.collider.CompareTag("ExitCollidableAudio") && downRay.collider.CompareTag("ExitCollidableAudio"))
             {
+                
                 rightAudio.Stop();
                 leftAudio.Stop();
                 upAudio.Stop();
@@ -76,6 +77,7 @@ public class SoundLocalization : MonoBehaviour
                 upLeftAudio.Stop();
                 downRightAudio.Stop();
                 downLeftAudio.Stop();
+                
                 if (SceneManager.GetActiveScene().name == "Tutorial")
                 {
                     TutorialExitSound.exitMaze = true;

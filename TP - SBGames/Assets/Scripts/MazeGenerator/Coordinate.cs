@@ -51,7 +51,7 @@ namespace Maze_Generator
              return unvisitedAdjacentCoordinates;
          }
 
-         public override bool Equals(object? obj)
+         public override bool Equals(object obj)
          {
              if (obj == null || this.GetType() != obj.GetType())
              {
